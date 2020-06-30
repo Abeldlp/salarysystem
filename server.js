@@ -20,6 +20,15 @@ const workerRoute = require("./Routes/worker");
 //Requiring route middlewares
 app.use("/workers", workerRoute);
 
+//Database connection
+mongoose.connect(
+  "mongodb://localhost:27017/worker",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Database connected");
+  }
+);
+
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });

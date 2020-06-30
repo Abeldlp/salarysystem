@@ -42,4 +42,14 @@ route.post("/add", async (req, res) => {
   }
 });
 
+route.delete("/:id", async (req, res) => {
+  try {
+    const deletedWorker = await Worker.deleteOne({ _id: req.params.id });
+    res.json(`${req.body.name} was deleted succesfully`);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
+
 module.exports = route;
