@@ -14,9 +14,11 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-//Set up route middlewares
+//Import route middlewares
+const workerRoute = require("./Routes/worker");
 
-
+//Requiring route middlewares
+app.use("/workers", workerRoute);
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
