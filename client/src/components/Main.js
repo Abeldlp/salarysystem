@@ -52,6 +52,9 @@ export default class Main extends Component {
         <h1>Workers</h1>
 
         {/*FORM TO FILTER A SEARCH*/}
+        <Link to="/">Monthly</Link>
+
+        {/*FORM TO FILTER A SEARCH*/}
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -80,7 +83,7 @@ export default class Main extends Component {
         {this.state.dataFiltered.map((worker) => (
           <div key={worker._id + 1}>
             <Link to={`/workers/${worker._id}`}>
-              {worker.name} {worker.surname}
+              {worker.name} {worker.surname} {worker.month}/{worker.year}
             </Link>
           </div>
         ))}

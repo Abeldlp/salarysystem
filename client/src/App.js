@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Main from "./components/Main";
 import AddWorkerInfo from "./components/AddWrokerInfo";
+import Months from "./components/Months";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //import PersonalInfo from "./components/PersonalInfo";
@@ -12,6 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/" exact component={Months} />
           <Route path="/workers" exact component={Main} />
           <Route path="/workers/:id" component={PersonalInfo} />
           <Route path="/addworkerinfo" component={AddWorkerInfo} />
