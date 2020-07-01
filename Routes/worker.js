@@ -15,6 +15,17 @@ route.get("/", async (req, res) => {
   }
 });
 
+
+route.get("/filtered/:name", async (req, res) => {
+  try {
+    const filtered = await Worker.find({ name: req.params.name });
+    res.json(filtered);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+//----------------------------
+
 route.get("/:id", async (req, res) => {
   try {
     const worker = await Worker.findById(req.params.id);
@@ -50,6 +61,5 @@ route.delete("/:id", async (req, res) => {
     res.json({ message: error });
   }
 });
-
 
 module.exports = route;
