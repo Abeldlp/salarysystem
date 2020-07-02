@@ -15,7 +15,6 @@ route.get("/", async (req, res) => {
   }
 });
 
-
 route.get("/filtered/:name", async (req, res) => {
   try {
     const filtered = await Worker.find({ name: req.params.name });
@@ -60,6 +59,27 @@ route.delete("/:id", async (req, res) => {
   } catch (error) {
     res.json({ message: error });
   }
+});
+
+//Update an existing worker
+
+route.post("/update/:id", (req, res) => {
+  Worker.findById(req.params.id).then((worker) => {
+    (worker.surname = req.body.surname),
+      (worker.name = req.body.name),
+      (worker.month = req.body.month),
+      (worker.year = req.body.year),
+      (worker.income = req.body.income);
+
+    worker
+      .save()
+      .then(() => {
+        res.json(`${worker.name} ${worker.surname} has been updated`);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
 });
 
 module.exports = route;

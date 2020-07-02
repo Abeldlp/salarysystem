@@ -49,14 +49,12 @@ export default class Main extends Component {
     let index = 0;
     return (
       <div>
-        <h1>Workers</h1>
-
-        {/*FORM TO FILTER A SEARCH*/}
-        <Link to="/">Monthly</Link>
+        <h1 style={{ fontFamily: "Montserrat" }}>Workers</h1>
 
         {/*FORM TO FILTER A SEARCH*/}
         <form onSubmit={this.handleSubmit}>
           <input
+            style={styles.input_style}
             type="text"
             placeholder="Find by Name"
             onChange={this.handleFilter}
@@ -64,30 +62,77 @@ export default class Main extends Component {
           />
         </form>
 
-        {/*LIST OF WORKERS*/}
-        {this.state.workers.map((worker) => (
-          <div key={worker.name + 1}>
-            <Link to={`/workers/${worker._id}`}>
-              {index++} {worker.name} {worker.surname}
-            </Link>
-          </div>
-        ))}
-        <br />
-        <br />
-
         {/*BUTTON TO ADD NEW WORKERS INFO*/}
-        <Link to="/addworkerinfo">Add new info</Link>
+        <Link style={styles.addinfoButton} to="/addworkerinfo">
+          Add new info
+        </Link>
 
-        {/*FILTERED RESULTS*/}
-        <h2>Filter results</h2>
-        {this.state.dataFiltered.map((worker) => (
-          <div key={worker._id + 1}>
-            <Link to={`/workers/${worker._id}`}>
-              {worker.name} {worker.surname} {worker.month}/{worker.year}
-            </Link>
+        <div style={styles.masterdiv}>
+          {/*LIST OF WORKERS*/}
+          <div>
+            <h2>All results</h2>
+            {this.state.workers.map((worker) => (
+              <div style={styles.link_div} key={worker.name + 1}>
+                <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  {index++} {worker.name} {worker.surname}
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
+
+          <br />
+          <br />
+
+          {/*FILTERED RESULTS*/}
+          <div>
+            <h2>Filter results</h2>
+            {this.state.dataFiltered.map((worker) => (
+              <div style={styles.link_div} key={worker._id + 1}>
+                <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  {worker.name} {worker.surname} {worker.month}/{worker.year}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+const styles = {
+  input_style: {
+    fontFamily: "Montserrat",
+    padding: "10px",
+    marginBottom: "10px",
+    borderRadius: "18px",
+    border: "1px solid black",
+    outline: "none",
+  },
+  month_link: {
+    fontFamily: "Source Sans Pro, sans-serif",
+    color: "black",
+    textDecoration: "none",
+    borderBottom: "1px solid black"
+  },
+  masterdiv: {
+    maxWidth: "50%",
+    minWidth: "50%",
+    margin: "auto",
+    display: "flex",
+    justifyContent: "space-around",
+  },
+  link_div: {
+    textAlign: "left",
+  },
+  addinfoButton: {
+    fontFamily: "Source Sans Pro",
+    fontWeight: "bold",
+    letterSpacing: "1px",
+    padding: "10px",
+    borderRadius: "18px",
+    backgroundColor: "#333333",
+    color: "white",
+    textDecoration: "none",
+  },
+};
