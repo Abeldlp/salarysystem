@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
 
@@ -30,7 +31,7 @@ app.use("/workers", workerRoute);
 
 //Database connection
 mongoose.connect(
-  "mongodb://localhost:27017/worker",
+  process.env.MONGODB_URI || "mongodb://localhost:27017/worker",
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Database connected");
