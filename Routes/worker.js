@@ -15,10 +15,28 @@ route.get("/", async (req, res) => {
   }
 });
 
+//Get filtered names or surnames containing the input value
 route.get("/filtered/:name", async (req, res) => {
   try {
-    const filtered = await Worker.find({ name: req.params.name });
+    const filtername = req.params.name;
+    const filtered = await Worker.find({
+      $or: [
+        { name: { $regex: ".*" + filtername + ".*" } },
+        { surname: { $regex: ".*" + filtername + ".*" } },
+      ],
+    });
     res.json(filtered);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
+//ROUTE TO GET A UNIQUE NAME
+//!Not being used at the moment
+route.get("/pername", async (req, res) => {
+  try {
+    const byname = await Worker.distinct("name");
+    res.json(byname);
   } catch (error) {
     res.json({ message: error });
   }
@@ -77,7 +95,7 @@ route.post("/update/:id", (req, res) => {
         res.json(`${worker.name} ${worker.surname} has been updated`);
       })
       .catch((error) => {
-        res.json({ message: error });
+        res.json({ message: error.reason });
       });
   });
 });

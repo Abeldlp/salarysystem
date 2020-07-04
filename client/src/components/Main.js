@@ -9,6 +9,7 @@ export default class Main extends Component {
       workers: [],
       filteredWorker: "",
       dataFiltered: [],
+      index: 0,
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -52,7 +53,7 @@ export default class Main extends Component {
         <h1 style={{ fontFamily: "Montserrat" }}>Workers</h1>
 
         {/*FORM TO FILTER A SEARCH*/}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} style={{ marginBottom: "10px" }}>
           <input
             style={styles.input_style}
             type="text"
@@ -60,6 +61,7 @@ export default class Main extends Component {
             onChange={this.handleFilter}
             required
           />
+          <input type="submit" value="Search" style={styles.addinfoButton} />
         </form>
 
         {/*BUTTON TO ADD NEW WORKERS INFO*/}
@@ -70,9 +72,9 @@ export default class Main extends Component {
         <div style={styles.masterdiv}>
           {/*LIST OF WORKERS*/}
           <div>
-            <h2>All results</h2>
+            <h2>All transiactions</h2>
             {this.state.workers.map((worker) => (
-              <div style={styles.link_div} key={worker.name + 1}>
+              <div style={styles.link_div} key={worker._id}>
                 <Link style={styles.month_link} to={`/workers/${worker._id}`}>
                   {index++} {worker.name} {worker.surname}
                 </Link>
@@ -85,9 +87,9 @@ export default class Main extends Component {
 
           {/*FILTERED RESULTS*/}
           <div>
-            <h2>Filter results</h2>
+            <h2>Filter by name</h2>
             {this.state.dataFiltered.map((worker) => (
-              <div style={styles.link_div} key={worker._id + 1}>
+              <div style={styles.link_div} key={worker._id}>
                 <Link style={styles.month_link} to={`/workers/${worker._id}`}>
                   {worker.name} {worker.surname} {worker.month}/{worker.year}
                 </Link>
@@ -113,7 +115,7 @@ const styles = {
     fontFamily: "Source Sans Pro, sans-serif",
     color: "black",
     textDecoration: "none",
-    borderBottom: "1px solid black"
+    borderBottom: "1px solid black",
   },
   masterdiv: {
     maxWidth: "50%",
@@ -134,5 +136,8 @@ const styles = {
     backgroundColor: "#333333",
     color: "white",
     textDecoration: "none",
+    border: "none",
+    outline: "none",
+    cursor: "pointer",
   },
 };

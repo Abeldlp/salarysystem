@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import MonthDetail from "./MonthDetail";
+//import MonthDetail from "./MonthDetail";
 
 export default class Months extends Component {
   constructor(props) {
@@ -41,14 +41,22 @@ export default class Months extends Component {
       <div>
         <h1 style={{ fontFamily: "Montserrat" }}>Months</h1>
 
+        {/*BUTTON TO ADD NEW WORKERS INFO*/}
+        <Link style={styles.addinfoButton} to="/addworkerinfo">
+          Add new info
+        </Link>
+
         <div style={styles.list_of_months}>
           <div style={styles.month_box}>
             <p style={styles.month_name}>January</p>
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 1) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -62,8 +70,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 2) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -77,8 +88,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 3) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -92,8 +106,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 4) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -107,8 +124,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 5) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -122,8 +142,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 6) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -137,8 +160,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 7) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -152,8 +178,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 8) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -167,8 +196,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 9) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -182,8 +214,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 10) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -197,8 +232,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 11) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -212,8 +250,11 @@ export default class Months extends Component {
             {this.state.fetchedWorkers.map((worker) => {
               if (worker.month === 12) {
                 return (
-                  <div>
-                    <Link style={styles.month_link} to={`/workers/${worker._id}`}>
+                  <div key={worker._id}>
+                    <Link
+                      style={styles.month_link}
+                      to={`/workers/${worker._id}`}
+                    >
                       {worker.surname} {worker.name}/ {worker.year}
                     </Link>
                   </div>
@@ -240,6 +281,8 @@ const styles = {
   list_of_months: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
+    marginTop: "20px",
   },
   month_box: {
     padding: 10,
@@ -253,11 +296,21 @@ const styles = {
   month_name: {
     fontFamily: "Montserrat, sans-serif",
     color: "black",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   month_link: {
     fontFamily: "Source Sans Pro. sans-serif",
     color: "black",
+    textDecoration: "none",
+  },
+  addinfoButton: {
+    fontFamily: "Source Sans Pro",
+    fontWeight: "bold",
+    letterSpacing: "1px",
+    padding: "10px",
+    borderRadius: "18px",
+    backgroundColor: "#333333",
+    color: "white",
     textDecoration: "none",
   },
 };
