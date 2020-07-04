@@ -62,7 +62,7 @@ export default class AddWrokerInfo extends Component {
     };
 
     axios
-      .post("http://localhost:8000/workers/add", person)
+      .post("/workers/add", person)
       .then((res) => console.log(res.data));
     window.location = "/";
   }

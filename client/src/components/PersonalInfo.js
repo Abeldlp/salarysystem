@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 export default class PersonalInfo extends Component {
   constructor(props) {
     super(props);
@@ -31,18 +30,16 @@ export default class PersonalInfo extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`http://localhost:8000/workers/${this.state.person}`)
-      .then((response) => {
-        this.setState({
-          personInfo: response.data,
-          newSurname: response.data.surname,
-          newName: response.data.name,
-          newMonth: response.data.month,
-          newYear: response.data.year,
-          newIncome: response.data.income,
-        });
+    axios.get(`/workers/${this.state.person}`).then((response) => {
+      this.setState({
+        personInfo: response.data,
+        newSurname: response.data.surname,
+        newName: response.data.name,
+        newMonth: response.data.month,
+        newYear: response.data.year,
+        newIncome: response.data.income,
       });
+    });
   }
 
   //HANDLE CHANGES TO THE UPDATE FORM
@@ -91,7 +88,7 @@ export default class PersonalInfo extends Component {
     );
     if (confirmed) {
       axios
-        .delete(`http://localhost:8000/workers/${this.state.person}`)
+        .delete(`/workers/${this.state.person}`)
         .then((response) => console.log(response.data));
 
       window.location = "/workers";
@@ -112,10 +109,7 @@ export default class PersonalInfo extends Component {
     };
 
     axios
-      .post(
-        `http://localhost:8000/workers/update/${this.state.person}`,
-        newData
-      )
+      .post(`/workers/update/${this.state.person}`, newData)
       .then((response) => console.log(response.data));
 
     window.location = `/workers/${this.state.person}`;

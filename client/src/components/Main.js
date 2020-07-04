@@ -18,7 +18,7 @@ export default class Main extends Component {
   /*FETCH ALL THE WORKERS FROM THE DATABASE*/
   componentDidMount() {
     axios
-      .get("http://localhost:8000/workers/")
+      .get("/workers/")
       .then((response) => {
         this.setState({ workers: response.data });
       })
@@ -37,7 +37,7 @@ export default class Main extends Component {
 
     axios
       .get(
-        `http://localhost:8000/workers/filtered/${this.state.filteredWorker}`
+        `/workers/filtered/${this.state.filteredWorker}`
       )
       .then((response) => {
         this.setState({

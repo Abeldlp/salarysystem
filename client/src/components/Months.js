@@ -18,7 +18,7 @@ export default class Months extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/workers/")
+      .get("/workers/")
       .then((response) => {
         this.setState({ fetchedWorkers: response.data });
       })
