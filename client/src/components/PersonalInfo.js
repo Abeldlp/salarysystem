@@ -91,9 +91,9 @@ export default class PersonalInfo extends Component {
         .delete(`/workers/${this.state.person}`)
         .then((response) => console.log(response.data));
 
-      window.location = "/workers";
+      window.location = "/";
     } else {
-      window.location = `/workers/${this.state.person}`;
+      window.location = "/";
     }
   }
 
@@ -112,7 +112,7 @@ export default class PersonalInfo extends Component {
       .post(`/workers/update/${this.state.person}`, newData)
       .then((response) => console.log(response.data));
 
-    window.location = `/workers/${this.state.person}`;
+    window.location = "/";
   }
   render() {
     return (
